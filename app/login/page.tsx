@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
+import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import AuthButton from "@/components/AuthButton";
 
 export default function Login({
   searchParams,
@@ -25,7 +27,7 @@ export default function Login({
       return redirect("/login?message=Could not authenticate user");
     }
 
-    return redirect("/protected");
+    return redirect("/home");
   };
 
   const signUp = async (formData: FormData) => {
@@ -36,9 +38,9 @@ export default function Login({
     const password = formData.get("password") as string;
     const supabase = createClient();
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
       options: {
         emailRedirectTo: `${origin}/auth/callback`,
       },
@@ -48,71 +50,67 @@ export default function Login({
       return redirect("/login?message=Could not authenticate user");
     }
 
-    return redirect("/login?message=Check email to continue sign in process");
+    return redirect(
+      "/login?message=Check your email to continue sign in process"
+    );
   };
 
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-      <Link
-        href="/"
-        className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>{" "}
-        Back
-      </Link>
-
-      <form className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
-        <label className="text-md" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-          name="email"
-          placeholder="you@example.com"
-          required
-        />
-        <label className="text-md" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-          type="password"
-          name="password"
-          placeholder="••••••••"
-          required
-        />
-        <SubmitButton
-          formAction={signIn}
-          className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2"
-          pendingText="Signing In..."
-        >
-          Sign In
-        </SubmitButton>
-        <SubmitButton
-          formAction={signUp}
-          className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
-          pendingText="Signing Up..."
-        >
-          Sign Up
-        </SubmitButton>
-        {searchParams?.message && (
-          <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
-            {searchParams.message}
+    <div className="max-w-xs mx-auto flex flex-col w-full gap-20 items-center bg-white h-screen py-8">
+      <form className="w-4/5 animate-in flex-1 flex flex-col gap-2 text-dark-purple justify-between">
+        <div className="flex flex-col">
+          <Link href="/" className="text-dark-purple mb-4">
+            <ArrowLeft weight="bold" size={32} />
+          </Link>
+          {/* <AuthButton /> */}
+          <h1 className="text-md font-bold text-dark-purple">
+            Login or Sign up
+          </h1>
+          <p className="text-dark-purple mb-4 text-xs">
+            Tell your friends about Swibe!
           </p>
-        )}
+          <label className="text-sm" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="flex h-10 w-full rounded-md border active:bg-white border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            name="email"
+            placeholder="you@example.com"
+            required
+          />
+          <label className="text-sm mt-2" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="flex h-10 w-full rounded-md border active:bg-white border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            required
+          />
+          {searchParams?.message && (
+            <p className="mt-4 p-4 bg-dark-purple/10 text-dark-purple text-center">
+              {searchParams.message}
+            </p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          {/* <SubmitButton
+            formAction={signIn}
+            className="w-full inline-flex h-12 items-center justify-center rounded-lg border-dark-purple border-2 text-dark-purple font-medium bg-white transition active:scale-95"
+            pendingText="Signing In..."
+          >
+            Sign In
+          </SubmitButton> */}
+          <SubmitButton
+            formAction={signIn}
+            className="w-full inline-flex h-12 items-center justify-center rounded-lg text-white font-medium bg-dark-purple transition active:scale-95"
+            pendingText="Signing In..."
+          >
+            Sign In
+          </SubmitButton>
+        </div>
       </form>
     </div>
   );

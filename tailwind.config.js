@@ -7,6 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "dark-purple": "#332261",
+        "off-white": "#E6E0F5",
+        purple: "#604795",
+        black: "#1D1338",
+        white: "#FFFFFF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         btn: {
@@ -16,5 +21,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
