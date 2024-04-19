@@ -90,6 +90,7 @@ export default function profile() {
       router.push("/login");
     } else {
       // Fetch profile information
+      console.log(user.data.user.id);
       let { data: profileData, error: profileError } = await supabase
         .from("profiles")
         .select("*")

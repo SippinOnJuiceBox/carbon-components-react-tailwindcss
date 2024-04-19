@@ -14,10 +14,10 @@ export function BottomNavigation() {
     return (
       <nav
         style={{ zIndex: 9999999 }}
-        className="max-w-xs mx-auto bg-white fixed bottom-0 inset-x-0 grid gap-0 w-full border-t-2 border-gray-100/20 dark:border-gray-850/50"
+        className="max-w-md mx-auto bg-white fixed bottom-0 inset-x-0 grid gap-0 w-full border-t-2 border-gray-100/20 dark:border-gray-850/50"
       >
         <div className="grid w-full py-2 grid-flow-col gap-0 items-center justify-evenly">
-          <Link
+          {/* <Link
             href="/home"
             className={`${
               pathname === "/home"
@@ -32,7 +32,7 @@ export function BottomNavigation() {
             )}
             Home
             <span className="sr-only">Home</span>
-          </Link>
+          </Link> */}
           <Link
             href="/map"
             className={`${
@@ -46,8 +46,8 @@ export function BottomNavigation() {
             ) : (
               <MapTrifold className="h-5 w-5" />
             )}
-            Map
-            <span className="sr-only">Map</span>
+            Meet Now
+            <span className="sr-only">Meet Now</span>
           </Link>
           <Link
             href="/profile"

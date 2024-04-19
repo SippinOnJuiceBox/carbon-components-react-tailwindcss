@@ -27,7 +27,7 @@ export default function Login({
       return redirect("/login?message=Could not authenticate user");
     }
 
-    return redirect("/home");
+    return redirect("/map");
   };
 
   const signUp = async (formData: FormData) => {
@@ -56,7 +56,7 @@ export default function Login({
   };
 
   return (
-    <div className="max-w-xs mx-auto flex flex-col w-full gap-20 items-center bg-white h-screen py-8">
+    <div className="max-w-md mx-auto flex flex-col w-full gap-20 items-center bg-white h-screen py-8">
       <form className="w-4/5 animate-in flex-1 flex flex-col gap-2 text-dark-purple justify-between">
         <div className="flex flex-col">
           <Link href="/" className="text-dark-purple mb-4">

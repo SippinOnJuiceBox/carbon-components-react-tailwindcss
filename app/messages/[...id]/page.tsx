@@ -113,7 +113,7 @@ const ChatSessionPage = ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex justify-center items-center w-full h-screen bg-gray-100">
       <div
-        className={`animate-in flex flex-col justify-between p-4 shadow-xl max-w-xs h-full w-full`}
+        className={`animate-in flex flex-col justify-between p-4 shadow-xl max-w-md h-full w-full`}
       >
         {/* <div className="flex flex-row"></div> */}
         <div className="p-4 flex items-center justify-center align-middle">

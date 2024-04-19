@@ -185,7 +185,20 @@ function FirstTimeLogin() {
         console.log("uploading");
         uploadFile(file, data.user.id);
       }
-      router.push("/login");
+
+      const supabase = createClient();
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        return redirect("/login?message=Could not authenticate user");
+      }
+
+      router.push("/map");
+      // router.push("/login");
     }
   }
 
@@ -304,7 +317,7 @@ function FirstTimeLogin() {
       <div
         className={`animate-in flex flex-col justify-between ${
           currentStep === 0 ? "bg-dark-purple" : "bg-white"
-        } p-4 shadow-xl max-w-xs h-full w-full`}
+        } p-4 shadow-xl max-w-md h-full w-full`}
       >
         <div>
           {currentStep > 0 && (
