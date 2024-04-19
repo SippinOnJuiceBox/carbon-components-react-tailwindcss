@@ -220,27 +220,27 @@ function FirstTimeLogin() {
             />
           </>
         );
-      case 2:
-        return (
-          <>
-            <h1 className="text-xl font-bold text-dark-purple">
-              Tell us about yourself.
-            </h1>
-            <p className="text-dark-purple mb-4">Create a short bio.</p>
-            <Textarea
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              placeholder="Create a short bio."
-              maxLength={250}
-              required
-            />
-            <p className="text-dark-purple text-sm text-right mt-1">
-              {bio.length} / 250
-            </p>
-          </>
-        );
+      // case 2:
+      //   return (
+      //     <>
+      //       <h1 className="text-xl font-bold text-dark-purple">
+      //         Tell us about yourself.
+      //       </h1>
+      //       <p className="text-dark-purple mb-4">Create a short bio.</p>
+      //       <Textarea
+      //         value={bio}
+      //         onChange={(e) => setBio(e.target.value)}
+      //         placeholder="Create a short bio."
+      //         maxLength={250}
+      //         required
+      //       />
+      //       <p className="text-dark-purple text-sm text-right mt-1">
+      //         {bio.length} / 250
+      //       </p>
+      //     </>
+      //   );
 
-      case 3:
+      case 2:
         return (
           <>
             <h1 className="text-xl font-bold text-dark-purple">
@@ -256,7 +256,7 @@ function FirstTimeLogin() {
             />
           </>
         );
-      case 4:
+      case 3:
         return (
           <>
             <h1 className="text-xl font-bold text-dark-purple">
@@ -272,7 +272,7 @@ function FirstTimeLogin() {
             />
           </>
         );
-      case 5:
+      case 4:
         return (
           <>
             <h1 className="text-xl font-bold text-dark-purple">
@@ -337,10 +337,10 @@ function FirstTimeLogin() {
         </div>
         {currentStep > 0 && (
           <button
-            onClick={currentStep === 5 ? signUp : handleNext}
+            onClick={currentStep === 4 ? signUp : handleNext}
             className="w-full inline-flex h-12 items-center justify-center rounded-lg text-white font-medium bg-dark-purple transition active:scale-95"
           >
-            {currentStep === 5 ? "Submit" : "Next"}
+            {currentStep === 4 ? "Submit" : "Next"}
           </button>
         )}
       </div>
