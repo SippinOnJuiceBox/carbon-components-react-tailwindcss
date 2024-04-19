@@ -451,7 +451,7 @@ const MapPage = () => {
               {selectedUser ? (
                 <>
                   <div className="w-4/5">
-                    <div className="w-full overflow-hidden h-[128] flex">
+                    <div className="w-full overflow-hidden h-[128] flex rounded-lg">
                       <Image
                         src={avatarUrl}
                         alt="User Avatar"
@@ -507,7 +507,7 @@ const MapPage = () => {
                 </div>
                 <>
                   <div className="w-4/5">
-                    <div className="w-full overflow-hidden flex">
+                    <div className="w-full overflow-hidden flex rounded-lg">
                       <Image
                         src={avatarUrl}
                         alt="User Avatar"
