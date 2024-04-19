@@ -161,7 +161,7 @@ const MapPage = () => {
         .getPublicUrl(`${userId}/avatar`);
       // .createSignedUrl(`/${userId}/avatar`, 60);
 
-      console.log("set avatar to id", avatarData.publicUrl);
+      // console.log("set avatar to id", avatarData.publicUrl);
       setAvatarUrl(avatarData.publicUrl);
     }
 
@@ -205,7 +205,7 @@ const MapPage = () => {
           (payload.new.receiver_id === user?.id ||
             payload.new.sender_id === user?.id)
         ) {
-          console.log("Redirecting to chat page");
+          // console.log("Redirecting to chat page");
           router.push(`/messages/${payload.new.chat_session_id}`);
         }
       }

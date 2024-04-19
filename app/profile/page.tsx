@@ -90,7 +90,7 @@ export default function profile() {
       router.push("/login");
     } else {
       // Fetch profile information
-      console.log(user.data.user.id);
+      // console.log(user.data.user.id);
       let { data: profileData, error: profileError } = await supabase
         .from("profiles")
         .select("*")
@@ -111,7 +111,7 @@ export default function profile() {
       if (avatarError) {
         console.error("Error fetching avatar:", avatarError);
       } else {
-        console.log(avatarData);
+        // console.log(avatarData);
         setMedia(avatarData.signedUrl);
       }
 

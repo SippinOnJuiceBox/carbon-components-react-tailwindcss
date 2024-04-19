@@ -56,7 +56,7 @@ const ChatSessionPage = ({ params }: { params: { id: string } }) => {
           .select("*")
           .eq("id", partnerId);
         partner && setChatPartner(partner[0]);
-        console.log(chatPartner?.display_name);
+        // console.log(chatPartner?.display_name);
       }
     };
 

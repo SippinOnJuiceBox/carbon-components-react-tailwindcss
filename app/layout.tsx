@@ -44,7 +44,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-gray-50 md:bg-background text-foreground max-w-sm mx-auto min-h-screen light">
+      <body
+        className={`bg-gray-50 md:bg-background text-foreground max-w-sm mx-auto min-h-screen light`}
+      >
         <main className=" w-full h-full flex max-w-sm mx-auto flex-col items-center">
           {children}
           {(await user) && <BottomNavigation />}

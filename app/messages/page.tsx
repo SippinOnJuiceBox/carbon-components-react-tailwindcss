@@ -89,7 +89,7 @@ export default function MessagesPage() {
   //   }
   // }
 
-  console.log(chatRequests);
+  // console.log(chatRequests);
 
   return (
     <div className="flex w-full bg-gray-50 h-screen items-center justify-center">

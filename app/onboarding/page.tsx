@@ -182,7 +182,7 @@ function FirstTimeLogin() {
       // console.log(origin);
       // redirect(`${origin}/login`);
       if (data.user?.id) {
-        console.log("uploading");
+        // console.log("uploading");
         uploadFile(file, data.user.id);
       }
 
@@ -295,7 +295,7 @@ function FirstTimeLogin() {
 
                   if (files && files.length > 0) {
                     setFile(files[0]);
-                    console.log("set file");
+                    // console.log("set file");
                   }
                 }}
                 type="file"
