@@ -38,6 +38,7 @@ const MapPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState<NearestUser | null>();
   const [avatarUrl, setAvatarUrl] = useState("");
+  const [isRequestSent, setIsRequestSent] = useState(false);
 
   const [chatRequests, setChatRequests] = useState<ChatRequest[]>([]);
   const [media, setMedia] = useState<string>();
@@ -276,6 +277,7 @@ const MapPage = () => {
       const eligibleUsers = nearestUsers.filter((user) => {
         return (
           user.id !== currentUserId &&
+          user.id !== selectedUser?.id &&
           !chatRequests.some((req) => {
             return (
               req.receiver_id === user.id && req.sender_id === currentUserId
@@ -289,6 +291,7 @@ const MapPage = () => {
         const randomUser =
           eligibleUsers[Math.floor(Math.random() * eligibleUsers.length)];
         setSelectedUser(randomUser);
+        setIsRequestSent(true);
       } else {
         alert("No eligible nearby users available");
       }
@@ -400,7 +403,7 @@ const MapPage = () => {
             </Marker>
           );
         })}
-        {selectedUser && (
+        {/* {selectedUser && (
           <Popup
             latitude={selectedUser.latitude}
             longitude={selectedUser.longitude}
@@ -409,7 +412,6 @@ const MapPage = () => {
           >
             <div className="flex flex-col items-center p-1">
               <h3 className="mt-2">{selectedUser.display_name}</h3>
-              {/* <p>{selectedUser.email}</p> */}
               <p>Bio: {selectedUser.bio}</p>
               <button
                 onClick={() => sendChatRequest(selectedUser.id)}
@@ -419,7 +421,7 @@ const MapPage = () => {
               </button>
             </div>
           </Popup>
-        )}
+        )} */}
       </Map>
       <Drawer.Root>
         <div className="items-center flex flex-col w-full justify-center">
@@ -476,7 +478,7 @@ const MapPage = () => {
                     }
                     className="w-4/5 inline-flex h-12 items-center justify-center rounded-lg text-white font-medium bg-dark-purple transition active:scale-95"
                   >
-                    Meet Now
+                    Request to meet
                   </button>
                 </>
               ) : (
