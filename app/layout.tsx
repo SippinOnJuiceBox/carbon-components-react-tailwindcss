@@ -44,6 +44,10 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      />
       <body
         className={`bg-gray-50 md:bg-background text-foreground max-w-sm mx-auto min-h-screen light`}
       >
