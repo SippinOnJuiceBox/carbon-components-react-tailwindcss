@@ -22,4 +22,5 @@ export interface Profile {
   display_name: string;
   bio: string;
   avatar_url: string;
+  isincognito: string;
 }

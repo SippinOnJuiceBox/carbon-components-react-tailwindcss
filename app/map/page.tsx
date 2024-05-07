@@ -139,7 +139,7 @@ const MapPage = () => {
         const nearest = userLocations
           .filter((userLocation: UserLocation) => {
             const distance = haversineDistance(location, userLocation);
-            return distance <= 5; // 5 km radius
+            return distance <= 1; // 5 km radius
           })
           .slice(0, 10); // top 10 nearest users
 
@@ -248,7 +248,8 @@ const MapPage = () => {
     const { data, error } = await supabase
       .from("profiles")
       .select("id, user_location, display_name, bio")
-      .not("user_location", "is", null); // Exclude profiles without locations
+      .not("user_location", "is", null) // Exclude profiles without locations
+      .not("isincognito", "is", true);
 
     if (error) {
       console.error("Error fetching user locations:", error);

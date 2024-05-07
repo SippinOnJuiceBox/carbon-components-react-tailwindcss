@@ -140,6 +140,7 @@ export default function profile() {
 
   function handleChange(e: { target: { name: any; value: any } }) {
     const { name, value } = e.target;
+    console.log(name, value);
     updateProfile({ [name]: value });
   }
 
@@ -215,8 +216,21 @@ export default function profile() {
             </p>
           </div>
           <div className="space-y-2 w-full flex flex-col gap-1">
-            <Label>Actively Searching</Label>
-            <Switch id="searching" />
+            <Label>Incognito</Label>
+            <Switch
+              // checked={profile.isincognito as any}
+              defaultChecked={(profile.isincognito as any) || false}
+              onCheckedChange={(e) =>
+                handleChange({
+                  target: {
+                    name: "isincognito",
+                    value: !e,
+                  },
+                })
+              }
+              // onChange={(e) => console.log(e.target)}
+              id="searching"
+            />
           </div>
         </CardContent>
         <CardFooter className="animate-in mb-12 flex flex-col gap-1">
